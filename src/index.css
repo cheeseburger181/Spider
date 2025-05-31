@@ -1,13 +1,506 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* --- обнуляющие стили --- */
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*,
+*:before,
+*:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+:focus,
+:active {
+    outline: none;
+}
+
+a:focus,
+a:active {
+    outline: none;
+}
+
+nav,
+footer,
+header,
+aside {
+    display: block;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+
+input,
+button,
+textarea {
+    font-family: inherit;
+}
+
+input::-ms-clear {
+    display: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+
+a,
+a:visited,
+a:hover {
+    text-decoration: none;
+}
+
+ul li {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    font-weight: 400;
+}
+
+
+
+/* --- Константы --- */
+
+:root {
+    /* - Цвета карт - */
+    --color-card: rgb(245, 245, 245);
+    --color-card-highlight: rgb(255, 255, 255);
+    --color-middle: rgb(230, 230, 230);
+    --color-suit-red: rgb(185, 9, 9);
+    --color-suit-black: rgb(10, 10, 10);
+    --color-shadow: rgba(100, 100, 100, 0.5);
+    --color-shadow-highlight: rgba(245, 255, 216, 0.5);
+
+    /* - Цвета портретов - */
+    --color-face-stroke: rgb(12, 12, 12);
+    --color-face-gold: rgb(240, 207, 19);
+    --color-face-white: rgb(231, 231, 231);
+    --color-face-black: rgb(15, 15, 15);
+
+    --color-face-suit-red: rgb(185, 9, 9);
+    --color-face-main-red: rgb(221, 214, 209);
+    --color-face-secondary-red: rgb(58, 78, 56);
+    --color-face-eyes-red: rgb(64, 180, 216);
+
+    --color-face-main-black: rgb(106, 112, 116);
+    --color-face-suit-black: rgb(63, 63, 63);
+    --color-face-secondary-black: rgb(80, 87, 79);
+    --color-face-eyes-black: rgb(88, 214, 63);
+
+    /* - Прочие цвета - */
+    --color-body: rgb(181, 205, 243);
+    --color-holder: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0));
+
+    /* - Ширина - */
+    --width-card: 250px;
+    --width-section-side: calc(var(--width-card) * 0.17);
+    --width-section-middle: calc(var(--width-card) - 2 * var(--width-section-side));
+    --width-face: 95%;
+
+    /* - Высота - */
+    --height-card: calc(var(--width-card) * 7/5);
+    --height-section-middle: calc(var(--height-card) - 2 * var(--size-middle-margin));
+
+    /* - Прочий размер - */
+    --size-border-radius: calc(var(--width-card) * 0.075);
+    --size-shadow: calc(var(--width-card) * 0.05);
+    --size-shadow-dragging: calc(var(--width-card) * 0.15);
+    --size-shadow-highlight: calc(var(--width-card) * 0.1);
+
+    --size-suit-corner: calc(var(--size-font) * 0.45);
+    --size-corner-padding: calc(var(--height-card) * 0.02) 0 calc(var(--height-card) * 0.005);
+    --size-font: calc(var(--width-card) * 0.175);
+
+    --size-suit-middle: 90%;
+    --size-middle-margin: calc(var(--height-card) * 0.075) 0;
+    --size-stroke: calc(var(--width-card) * 0.04);
+    --size-middle-border: calc(var(--size-stroke) / 3);
+
+    --size-holder-border: calc(var(--width-card) * 0.02);
+
+    /* - Прозрачность - */
+    --opacity-min: 15%;
+    --opacity-mid: 30%;
+    --opacity-max: 50%;
+
+    --opacity-holder: 25%;
+
+    /* - Тени и границы - */
+    --shadow-card: 0 0 var(--size-shadow) var(--color-shadow);
+    --shadow-card-dragging: 0 0 var(--size-shadow-dragging) var(--color-shadow);
+    --shadow-card-highlight: 0 0 var(--size-shadow-highlight) var(--color-shadow-highlight);
+
+    --border-card: var(--size-middle-border) solid var(--color-middle);
+    --border-face: var(--size-middle-border) solid var(--color-face-stroke);
+}
+
+
+
+/* --- Карты --- */
+
+.card {
+    position: absolute;
+    width: var(--width-card);
+    height: var(--height-card);
+    border: var(--border-card);
+    border-radius: var(--size-border-radius);
+    box-shadow: var(--shadow-card);
+    background-color: var(--color-card);
+    display: flex;
+    user-select: none;
+    cursor: grab;
+}
+
+.card_dragging {
+    box-shadow: var(--shadow-card-dragging);
+    transform: scale(1.05);
+}
+
+.card_highlight {
+    box-shadow: var(--shadow-card-highlight);
+    background-color: var(--color-card-highlight);
+    transition: all 0.2s;
+}
+
+.card__section_left,
+.card__section_right {
+    width: var(--width-section-side);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card__section_right {
+    transform: scale(-1, -1);
+}
+
+.card__section_middle {
+    width: var(--width-section-middle);
+    height: var(--height-section-middle);
+    margin: var(--size-middle-margin);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+
+.card__section_middle:has(> .card__face) {
+    border: var(--border-face);
+    background-color: var(--color-middle);
+}
+
+.card__suit_type_heart,
+.card__suit_type_diamond {
+    fill: var(--color-suit-red);
+    color: var(--color-suit-red);
+}
+
+.card__suit_type_spade,
+.card__suit_type_club {
+    fill: var(--color-suit-black);
+    color: var(--color-suit-black);
+}
+
+.card__suit_place_corner {
+    width: var(--size-suit-corner);
+}
+
+.card__suit_place_middle {
+    width: var(--size-suit-middle);
+}
+
+.card__rank {
+    padding: var(--size-corner-padding);
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: var(--size-font);
+}
+
+
+
+/* --- Портреты --- */
+
+.card__face {
+    width: var(--width-face);
+    height: auto;
+}
+
+.card__face_stroke {
+    stroke: var(--color-face-stroke);
+    stroke-width: var(--size-stroke);
+}
+
+.card__face_opacity_min {
+    fill: var(--color-face-black);
+    fill-opacity: var(--opacity-min);
+}
+
+.card__face_opacity_mid {
+    fill: var(--color-face-black);
+    fill-opacity: var(--opacity-mid);
+}
+
+.card__face_opacity_max {
+    fill: var(--color-face-black);
+    fill-opacity: var(--opacity-max);
+}
+
+.card__face_color_gold {
+    fill: var(--color-face-gold);
+}
+
+.card__face_color_white {
+    fill: var(--color-face-white);
+}
+
+.card__face_color_black {
+    fill: var(--color-face-black);
+}
+
+.card__face_color_suit_heart,
+.card__face_color_suit_diamond {
+    fill: var(--color-face-suit-red);
+}
+
+.card__face_color_suit_spade,
+.card__face_color_suit_club {
+    fill: var(--color-face-suit-black);
+}
+
+.card__face_color_main_heart,
+.card__face_color_main_diamond {
+    fill: var(--color-face-main-red);
+}
+
+.card__face_color_main_spade,
+.card__face_color_main_club {
+    fill: var(--color-face-main-black);
+}
+
+.card__face_color_secondary_heart,
+.card__face_color_secondary_diamond {
+    fill: var(--color-face-secondary-red);
+}
+
+.card__face_color_secondary_spade,
+.card__face_color_secondary_club {
+    fill: var(--color-face-secondary-black);
+}
+
+.card__face_color_eyes_heart,
+.card__face_color_eyes_diamond {
+    fill: var(--color-face-eyes-red);
+}
+
+.card__face_color_eyes_spade,
+.card__face_color_eyes_club {
+    fill: var(--color-face-eyes-black);
+}
+
+
+
+/* --- Шаблоны номиналов --- */
+
+.card__grid_template_a_1 {
+    grid-row: 1/3;
+}
+
+.card__grid_template_a_2 {
+    grid-row: 1/2;
+}
+
+.card__grid_template_a_3 {
+    grid-row: 1/3;
+}
+
+.card__grid_template_a_4 {
+    grid-row: 3/5;
+}
+
+.card__grid_template_a_5 {
+    grid-row: 2/4;
+}
+
+.card__grid_template_a_6 {
+    grid-row: 3/5;
+}
+
+.card__grid_template_a_7 {
+    grid-row: 5/7;
+    transform: scale(-1, -1);
+}
+
+.card__grid_template_a_8 {
+    grid-row: 4/6;
+}
+
+.card__grid_template_a_9 {
+    grid-row: 5/7;
+    transform: scale(-1, -1);
+}
+
+.card__grid_template_a_10 {
+    grid-row: 7/9;
+    transform: scale(-1, -1);
+}
+
+.card__grid_template_a_11 {
+    grid-row: 6/8;
+    transform: scale(-1, -1);
+}
+
+.card__grid_template_a_12 {
+    grid-row: 7/9;
+    transform: scale(-1, -1);
+}
+
+.card__grid_template_a_13 {
+    grid-row: 8/9;
+}
+
+
+
+.card__grid_template_b_1 {
+    grid-row: 1/3;
+}
+
+.card__grid_template_b_2 {
+    grid-row: 1/2;
+}
+
+.card__grid_template_b_3 {
+    grid-row: 1/3;
+}
+
+.card__grid_template_b_4 {
+    grid-row: 3/4;
+}
+
+.card__grid_template_b_5 {
+    grid-row: 2/5;
+}
+
+.card__grid_template_b_6 {
+    grid-row: 3/4;
+}
+
+.card__grid_template_b_7 {
+    grid-row: 4/6;
+}
+
+.card__grid_template_b_8 {
+    grid-row: 5/9;
+}
+
+.card__grid_template_b_9 {
+    grid-row: 4/6;
+}
+
+.card__grid_template_b_10 {
+    grid-row: 6/7;
+}
+
+.card__grid_template_b_11 {
+    grid-row: 6/7;
+}
+
+.card__grid_template_b_12 {
+    grid-row: 7/9;
+    transform: scale(-1, -1);
+}
+
+.card__grid_template_b_13 {
+    grid-row: 7/9;
+    transform: scale(-1, -1);
+}
+
+
+
+.card__grid_template_c_1 {
+    grid-row: 1/5;
+    grid-column: 1/4;
+    align-self: flex-end;
+}
+
+.card__grid_template_c_2 {
+    grid-row: 5/9;
+    grid-column: 1/4;
+    align-self: flex-start;
+    transform: scale(-1, -1);
+}
+
+
+
+/* --- Держатель карт --- */
+
+.holder {
+    position: relative;
+    width: var(--width-card);
+    height: var(--height-card);
+    border-radius: var(--size-border-radius);
+    background: var(--color-holder);
+}
+
+.holder::after {
+    content: '';
+    position: absolute;
+    top: var(--size-holder-border);
+    left: var(--size-holder-border);
+    bottom: var(--size-holder-border);
+    right: var(--size-holder-border);
+    border-radius: calc(var(--size-border-radius) - var(--size-holder-border));
+    background-color: var(--color-body);
+    opacity: var(--opacity-holder);
+}
+
+
+
+/* --- Игровое поле --- */
+
+.field {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 2.5% 0;
+}
+
+
+
+/* --- Тест --- */
+
+body {
+    min-height: 100%;
+    height: auto;
+    box-shadow: inset var(--shadow-card-dragging);
+    background-color: var(--color-body);
+    overflow: hidden;
 }

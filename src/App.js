@@ -1,23 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useRef, useState } from "react";
+import Card from "./Card";
+import Holder from "./Holder";
+import PlayField from "./PlayField";
 
-function App() {
+export let cardsArray = []
+export let holdersArray = []
+
+function App(props) {
+  const ranks = ["A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K"]
+  const suits = ["heart", "spade", "diamond", "club"]
+
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
+  }
+
+  const container = []
+  const fieldRef = useRef(null)
+  const [state, setState] = useState([])
+
+  useEffect(() => {
+    if (fieldRef.current) {
+      let i = 0
+      fieldRef.current.childNodes.forEach(n => {
+        const nRect = n.getBoundingClientRect()
+        container.push(<Card key={i++} rank={ranks[getRandomInt(13)]} suit={suits[getRandomInt(4)]} id={`c${i++}`} left={nRect.left} top={nRect.top} />)
+        setState(container)
+      })
+    }
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <PlayField ref={fieldRef} num={6} />
+      <div className="cards">
+        {state}
+      </div>
     </div>
   );
 }

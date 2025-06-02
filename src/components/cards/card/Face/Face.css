@@ -1,0 +1,70 @@
+/* --- ПОРТРЕТЫ --- */
+
+.card__face {
+    width: var(--width-face);
+    height: auto;
+}
+
+.card__face_stroke {
+    stroke: var(--color-face-stroke);
+    stroke-width: var(--size-stroke);
+}
+
+.card__face_opacity_min {
+    fill: var(--color-face-black);
+    fill-opacity: var(--opacity-min);
+}
+
+.card__face_opacity_mid {
+    fill: var(--color-face-black);
+    fill-opacity: var(--opacity-mid);
+}
+
+.card__face_opacity_max {
+    fill: var(--color-face-black);
+    fill-opacity: var(--opacity-max);
+}
+
+.card__face_color_gold {
+    fill: var(--color-face-gold);
+}
+
+.card__face_color_white {
+    fill: var(--color-face-white);
+}
+
+.card__face_color_black {
+    fill: var(--color-face-black);
+}
+
+.card__face_color_suit_red {
+    fill: var(--color-face-suit-red);
+}
+
+.card__face_color_suit_black {
+    fill: var(--color-face-suit-black);
+}
+
+.card__face_color_main_red {
+    fill: var(--color-face-main-red);
+}
+
+.card__face_color_main_black {
+    fill: var(--color-face-main-black);
+}
+
+.card__face_color_secondary_red {
+    fill: var(--color-face-secondary-red);
+}
+
+.card__face_color_secondary_black {
+    fill: var(--color-face-secondary-black);
+}
+
+.card__face_color_eyes_red {
+    fill: var(--color-face-eyes-red);
+}
+
+.card__face_color_eyes_black {
+    fill: var(--color-face-eyes-black);
+}

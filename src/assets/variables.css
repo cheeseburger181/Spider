@@ -1,0 +1,78 @@
+/* --- КОНСТАНТЫ --- */
+
+:root {
+    /* - Цвета карт - */
+    --color-card: rgb(245, 245, 245);
+    --color-card-highlight: rgb(255, 255, 255);
+    --color-middle: rgb(230, 230, 230);
+    --color-red: rgb(185, 9, 9);
+    --color-black: rgb(10, 10, 10);
+    --color-shadow: rgba(100, 100, 100, 0.5);
+    --color-shadow-highlight: rgb(240, 240, 240);
+
+    /* - Цвета портретов - */
+    --color-face-stroke: rgb(12, 12, 12);
+    --color-face-gold: rgb(240, 207, 19);
+    --color-face-white: rgb(231, 231, 231);
+    --color-face-black: rgb(15, 15, 15);
+
+    --color-face-suit-red: rgb(185, 9, 9);
+    --color-face-main-red: rgb(221, 214, 209);
+    --color-face-secondary-red: rgb(58, 78, 56);
+    --color-face-eyes-red: rgb(64, 180, 216);
+
+    --color-face-main-black: rgb(106, 112, 116);
+    --color-face-suit-black: rgb(63, 63, 63);
+    --color-face-secondary-black: rgb(80, 87, 79);
+    --color-face-eyes-black: rgb(88, 214, 63);
+
+    /* - Прочие цвета - */
+    --color-body: rgb(181, 205, 243);
+    --color-field: rgb(151, 180, 226);
+    --color-holder: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0) 85%);
+
+    /* - Ширина - */
+    --width-card: 110px;
+    --width-section-side: calc(var(--width-card) * 0.17);
+    --width-section-middle: calc(var(--width-card) - 2 * var(--width-section-side));
+    --width-face: 95%;
+
+    /* - Высота - */
+    --height-card: calc(var(--width-card) * 7/5);
+    --height-section-middle: calc(var(--height-card) - 2 * var(--size-middle-margin));
+
+    /* - Прочий размер - */
+    --size-border-radius: calc(var(--width-card) * 0.075);
+    --size-shadow: calc(var(--width-card) * 0.05);
+    --size-shadow-dragging: calc(var(--width-card) * 0.15);
+    --size-shadow-highlight: calc(var(--width-card) * 0.15);
+
+    --size-suit-corner: calc(var(--size-font) * 0.45);
+    --size-corner-padding: calc(var(--height-card) * 0.02) 0 calc(var(--height-card) * 0.005);
+    --size-font: calc(var(--width-card) * 0.175);
+
+    --size-suit-middle: 90%;
+    --size-middle-margin: calc(var(--height-card) * 0.075) 0;
+    --size-stroke: calc(var(--width-card) * 0.04);
+    --size-middle-border: calc(var(--size-stroke) / 3);
+
+    --size-holder-border: calc(var(--width-card) * 0.02);
+
+    /* - Прозрачность - */
+    --opacity-min: 15%;
+    --opacity-mid: 30%;
+    --opacity-max: 50%;
+
+    --opacity-holder: 25%;
+
+    /* - Тени и границы - */
+    --shadow-card: 0 0 var(--size-shadow) var(--color-shadow);
+    --shadow-card-dragging: 0 0 var(--size-shadow-dragging) var(--color-shadow);
+    --shadow-card-highlight: 0 0 var(--size-shadow-highlight) var(--color-shadow-highlight);
+
+    --border-card: var(--size-middle-border) solid var(--color-middle);
+    --border-face: var(--size-middle-border) solid var(--color-face-stroke);
+
+    /* - Задержки - */
+    --delay-card: 0.2s;
+}

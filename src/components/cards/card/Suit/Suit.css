@@ -1,0 +1,17 @@
+/* --- МАСТИ --- */
+
+.card__suit_type_red {
+    fill: var(--color-red);
+}
+
+.card__suit_type_black {
+    fill: var(--color-black);
+}
+
+.card__suit_position_corner {
+    width: var(--size-suit-corner);
+}
+
+.card__suit_position_middle {
+    width: var(--size-suit-middle);
+}

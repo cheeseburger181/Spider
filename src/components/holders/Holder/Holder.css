@@ -1,0 +1,21 @@
+/* --- ДЕРЖАТЕЛИ КАРТ --- */
+
+.holder {
+    position: relative;
+    width: var(--width-card);
+    height: var(--height-card);
+    border-radius: var(--size-border-radius);
+    background: var(--color-holder);
+}
+
+.holder::after {
+    content: '';
+    position: absolute;
+    top: var(--size-holder-border);
+    left: var(--size-holder-border);
+    bottom: var(--size-holder-border);
+    right: var(--size-holder-border);
+    border-radius: calc(var(--size-border-radius) - var(--size-holder-border));
+    background-color: var(--color-field);
+    opacity: var(--opacity-holder);
+}

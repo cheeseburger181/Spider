@@ -1,0 +1,72 @@
+/* --- КАРТЫ --- */
+
+.card {
+    position: absolute;
+    width: var(--width-card);
+    height: var(--height-card);
+    border: var(--border-card);
+    border-radius: var(--size-border-radius);
+    box-shadow: var(--shadow-card);
+    background-color: var(--color-card);
+    display: flex;
+    user-select: none;
+    cursor: grab;
+}
+
+.card>* {
+    pointer-events: none;
+}
+
+.card_dragging {
+    box-shadow: var(--shadow-card-dragging);
+    transform: scale(1.05);
+}
+
+.card_highlight {
+    box-shadow: var(--shadow-card-highlight);
+    background-color: var(--color-card-highlight);
+    transition: all 0.2s;
+}
+
+.card__section_left,
+.card__section_right {
+    width: var(--width-section-side);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card__section_right {
+    transform: scale(-1, -1);
+}
+
+.card__section_middle {
+    width: var(--width-section-middle);
+    height: var(--height-section-middle);
+    margin: var(--size-middle-margin);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    justify-items: center;
+    align-items: center;
+}
+
+.card__section_middle:has(> .card__face) {
+    border: var(--border-face);
+    background-color: var(--color-middle);
+}
+
+.card__rank {
+    padding: var(--size-corner-padding);
+    font-family: "Barlow Condensed", sans-serif;
+    font-size: var(--size-font);
+}
+
+.card__rank_type_red {
+    color: var(--color-red);
+}
+
+.card__rank_type_black {
+    color: var(--color-black);
+}

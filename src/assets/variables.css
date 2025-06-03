@@ -2,7 +2,7 @@
 
 :root {
     /* - Цвета карт - */
-    --color-card: rgb(245, 245, 245);
+    --color-card: rgb(240, 240, 240);
     --color-card-highlight: rgb(255, 255, 255);
     --color-middle: rgb(230, 230, 230);
     --color-red: rgb(185, 9, 9);
@@ -32,10 +32,13 @@
     --color-holder: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0) 85%);
 
     /* - Ширина - */
-    --width-card: 110px;
+    --width-card: min(var(--width-field) * 0.09, var(--width-field-max) * 0.09);
     --width-section-side: calc(var(--width-card) * 0.17);
     --width-section-middle: calc(var(--width-card) - 2 * var(--width-section-side));
     --width-face: 95%;
+    
+    --width-field: 85vw;
+    --width-field-max: 1000px;
 
     /* - Высота - */
     --height-card: calc(var(--width-card) * 7/5);

@@ -1,28 +1,28 @@
 /* --- ПОРТРЕТЫ --- */
 
 .card__face {
-    width: var(--width-face);
+    width: var(--width-card-face);
     height: auto;
 }
 
 .card__face_stroke {
     stroke: var(--color-face-stroke);
-    stroke-width: var(--size-stroke);
+    stroke-width: var(--size-middle-stroke);
 }
 
 .card__face_opacity_min {
     fill: var(--color-face-black);
-    fill-opacity: var(--opacity-min);
+    fill-opacity: var(--opacity-face-min);
 }
 
 .card__face_opacity_mid {
     fill: var(--color-face-black);
-    fill-opacity: var(--opacity-mid);
+    fill-opacity: var(--opacity-face-mid);
 }
 
 .card__face_opacity_max {
     fill: var(--color-face-black);
-    fill-opacity: var(--opacity-max);
+    fill-opacity: var(--opacity-face-max);
 }
 
 .card__face_color_gold {

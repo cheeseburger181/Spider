@@ -1,0 +1,14 @@
+/* --- ДЕРЖАТЕЛИ КАРТ --- */
+
+.holders {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.holders .holder:last-child {
+    position: absolute;
+    left: calc(var(--width-card-main) * (-2));
+    top: 0;
+}

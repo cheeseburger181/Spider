@@ -1,23 +1,20 @@
-import './Holder.css'
+import './Holder.css';
 import { useEffect, useRef } from "react";
-import { holdersArray } from "../../../App";
 
 function Holder(props) {
     const holderRef = useRef(null);
 
     useEffect(() => {
-        if (holderRef.current) {
+        if (holderRef.current && holderRef.current.classList.contains("field__holder")) {
             holderRef.current.dataset.id = props.id;
             holderRef.current.dataset.placedOn = "";
             holderRef.current.dataset.hasOnTop = "";
             holderRef.current.style = `z-index: 0`;
-
-            holdersArray.push(holderRef.current);
         };
     });
 
     return (
-        <div className={`holder`} ref={holderRef}></div>
+        <div className={props.className ? `holder ${props.className}` : `holder`} ref={holderRef}></div>
     );
 };
 

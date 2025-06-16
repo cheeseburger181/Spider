@@ -1,0 +1,18 @@
+/* --- ВЕРХНИЙ ИГРОВОЙ БЛОК --- */
+
+.main__score {
+    width: 100%;
+    height: auto;
+    padding: var(--size-main-padding);
+    background-color: var(--color-score);
+    display: flex;
+    justify-content: space-between;
+}
+
+.main__score_left {
+    opacity: 0;
+}
+
+.main__score .holder::after {
+    background-color: var(--color-score);
+}

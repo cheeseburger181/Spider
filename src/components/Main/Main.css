@@ -1,0 +1,11 @@
+/* --- ГЛАВНАЯ ЧАСТЬ СТРАНИЦЫ --- */
+
+.main {
+    max-width: var(--width-main-max);
+    width: var(--width-main);
+    height: 100%;
+    border: var(--border-main);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}

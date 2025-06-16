@@ -2,80 +2,99 @@
 
 :root {
     /* - Цвета карт - */
-    --color-card: rgb(240, 240, 240);
-    --color-card-highlight: rgb(255, 255, 255);
-    --color-middle: rgb(230, 230, 230);
-    --color-red: rgb(185, 9, 9);
-    --color-black: rgb(10, 10, 10);
-    --color-shadow: rgba(100, 100, 100, 0.5);
-    --color-shadow-highlight: rgb(240, 240, 240);
+    --color-card-main: rgb(240, 240, 240);       /* Основной цвет карты */
+    --color-card-secondary: rgb(225, 225, 225);        /* Дополнительный цвет карты */
+    --color-card-back: rgb(107, 122, 150);       /* Цвет рубашки карты */
+    --color-card-red: rgb(185, 9, 9);       /* Цвет красной масти */
+    --color-card-black: rgb(10, 10, 10);        /* Цвет чёрной масти */
+    --color-card-highlight: rgb(255, 255, 255);        /* Цвет подсвеченной карты */
+    --color-card-shadow-main: rgba(100, 100, 100, 0.5);        /* Цвет тени карты */
+    --color-card-shadow-highlight: rgb(240, 240, 240);        /* Цвет подсветки карты */
 
     /* - Цвета портретов - */
-    --color-face-stroke: rgb(12, 12, 12);
-    --color-face-gold: rgb(240, 207, 19);
-    --color-face-white: rgb(231, 231, 231);
-    --color-face-black: rgb(15, 15, 15);
+    --color-face-stroke: rgb(12, 12, 12);        /* Цвет контура портрета */
+    --color-face-gold: rgb(240, 207, 19);        /* Золотой цвет портрета */
+    --color-face-white: rgb(231, 231, 231);        /* Белый цвет портрета */
+    --color-face-black: rgb(15, 15, 15);        /* Чёрный цвет портрета */
 
-    --color-face-suit-red: rgb(185, 9, 9);
-    --color-face-main-red: rgb(221, 214, 209);
-    --color-face-secondary-red: rgb(58, 78, 56);
-    --color-face-eyes-red: rgb(64, 180, 216);
+    --color-face-suit-red: rgb(185, 9, 9);        /* Цвет масти красного портрета */
+    --color-face-main-red: rgb(221, 214, 209);        /* Цвет тела красного портрета */
+    --color-face-secondary-red: rgb(58, 78, 56);        /* Дополнительный цвет красного портрета */
+    --color-face-eyes-red: rgb(64, 180, 216);        /* Цвет глаз красного портрета */
 
-    --color-face-main-black: rgb(106, 112, 116);
-    --color-face-suit-black: rgb(63, 63, 63);
-    --color-face-secondary-black: rgb(80, 87, 79);
-    --color-face-eyes-black: rgb(88, 214, 63);
+    --color-face-suit-black: rgb(63, 63, 63);        /* Цвет масти чёрного портрета */
+    --color-face-main-black: rgb(106, 112, 116);        /* Цвет тела чёрного портрета */
+    --color-face-secondary-black: rgb(80, 87, 79);        /* Дополнительный цвет чёрного портрета */
+    --color-face-eyes-black: rgb(88, 214, 63);        /* Цвет глаз чёрного портрета */
 
     /* - Прочие цвета - */
-    --color-body: rgb(181, 205, 243);
-    --color-field: rgb(151, 180, 226);
-    --color-holder: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0) 85%);
+    --color-body: rgb(166, 191, 228);        /* Цвет фона */
+    --color-score: rgb(124, 156, 202);        /* Цвет верхнего игрового блока */
+    --color-field: rgb(145, 173, 216);        /* Цвет игрового поля */
+    --color-holder: linear-gradient(rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0) 85%);        /* Цвет держателя карты */
 
     /* - Ширина - */
-    --width-card: min(var(--width-field) * 0.09, var(--width-field-max) * 0.09);
-    --width-section-side: calc(var(--width-card) * 0.17);
-    --width-section-middle: calc(var(--width-card) - 2 * var(--width-section-side));
-    --width-face: 95%;
+    --width-card-main: min(var(--width-main) * 0.09, var(--width-main-max) * 0.09);        /* Основная ширина карты */
+    --width-card-middle: calc(var(--width-card-main) - 2 * var(--width-card-side));        /* Ширина средней секции карты */
+    --width-card-side: calc(var(--width-card-main) * 0.17);        /* Ширина боковых секций карты */
+    --width-card-face: calc(var(--width-card-middle) * 0.9);        /* Ширина портрета карты */
     
-    --width-field: 85vw;
-    --width-field-max: 1000px;
+    --width-main-max: 900px;        /* Максимальная ширина главной части страницы */
+    --width-main: 85vw;        /* Ширина главной части страницы */
 
     /* - Высота - */
-    --height-card: calc(var(--width-card) * 7/5);
-    --height-section-middle: calc(var(--height-card) - 2 * var(--size-middle-margin));
+    --height-card-main: calc(var(--width-card-main) * 7/5);        /* Основная высота карты */
+    --height-card-middle: calc(var(--height-card-main) - 2 * var(--size-middle-margin));        /* Высота средней секции карты */
 
     /* - Прочий размер - */
-    --size-border-radius: calc(var(--width-card) * 0.075);
-    --size-shadow: calc(var(--width-card) * 0.05);
-    --size-shadow-dragging: calc(var(--width-card) * 0.15);
-    --size-shadow-highlight: calc(var(--width-card) * 0.15);
+    --size-card-border: calc(var(--width-card-main) * 0.02);        /* Размер границы карты */
+    --size-card-border-radius: calc(var(--width-card-main) * 0.075);        /* Размер скругления границы карты */
+    --size-card-shadow-main: calc(var(--width-card-main) * 0.05);        /* Размер основной тени карты */
+    --size-card-shadow-dragging: calc(var(--width-card-main) * 0.15);        /* Размер тени перемещаемой карты */
+    --size-card-shadow-highlight: calc(var(--width-card-main) * 0.15);        /* Размер подсветки карты */
+    --size-card-scale: 1.05;        /* Процент изменения размера перемещаемой карты */
 
-    --size-suit-corner: calc(var(--size-font) * 0.45);
-    --size-corner-padding: calc(var(--height-card) * 0.02) 0 calc(var(--height-card) * 0.005);
-    --size-font: calc(var(--width-card) * 0.175);
+    --size-side-suit: calc(var(--size-side-font) * 0.5);        /* Размер боковой иконки масти */
+    --size-side-font: calc(var(--width-card-main) * 0.175);        /* Размер бокового шрифта */
+    --size-side-padding: calc(var(--height-card-main) * 0.02) 0 calc(var(--height-card-main) * 0.005);        /* Размер боковых отступов */
 
-    --size-suit-middle: 90%;
-    --size-middle-margin: calc(var(--height-card) * 0.075) 0;
-    --size-stroke: calc(var(--width-card) * 0.04);
-    --size-middle-border: calc(var(--size-stroke) / 3);
+    --size-middle-suit: calc(var(--width-card-middle) / 3 * 0.9);        /* Размер центральной иконки масти */
+    --size-middle-margin: calc(var(--height-card-main) * 0.075) 0;        /* Размер центральных отступов */
+    --size-middle-stroke: calc(var(--width-card-main) * 0.04);        /* Размер центрального контура */
+    --size-middle-border: calc(var(--size-middle-stroke) / 3);        /* Размер центральной границы */
 
-    --size-holder-border: calc(var(--width-card) * 0.02);
+    --size-holder-border: calc(var(--width-card-main) * 0.02);        /* Размер границы держателя карты */
+    --size-holder-border-radius: calc(var(--size-card-border-radius) - var(--size-holder-border));        /* Размер скругления границы держателя карты */
+
+    --size-body-padding: 20px 0;        /* Размер отступов фона */
+    --size-body-shadow: 2.5vw;        /* Размер тени фона */
+    --size-main-padding: calc(var(--width-card-main) * 0.15);        /* Размер отступов главной части страницы */
+    --size-main-border: calc(min(var(--width-main), var(--width-main-max)) * 0.005);        /* Размер границы главной части страницы */
+    --size-field-shadow: calc(min(var(--width-main), var(--width-main-max)) * 0.005);        /* Размер тени игрового поля */
 
     /* - Прозрачность - */
-    --opacity-min: 15%;
-    --opacity-mid: 30%;
-    --opacity-max: 50%;
+    --opacity-face-min: 15%;        /* Минимальная прозрачность цветов портерта */
+    --opacity-face-mid: 30%;        /* Средняя прозрачность цветов портерта */
+    --opacity-face-max: 50%;        /* Максимальная прозрачность цветов портерта */
 
-    --opacity-holder: 25%;
+    --opacity-holder: 25%;        /* Прозрачность держателя карты */
 
     /* - Тени и границы - */
-    --shadow-card: 0 0 var(--size-shadow) var(--color-shadow);
-    --shadow-card-dragging: 0 0 var(--size-shadow-dragging) var(--color-shadow);
-    --shadow-card-highlight: 0 0 var(--size-shadow-highlight) var(--color-shadow-highlight);
+    --shadow-card-main: 0 0 var(--size-card-shadow-main) var(--color-card-shadow-main);        /* Основная тень карты */
+    --shadow-card-dragging: 0 0 var(--size-card-shadow-dragging) var(--color-card-shadow-main);        /* Тень перемещаемой карты */
+    --shadow-card-highlight: 0 0 var(--size-card-shadow-highlight) var(--color-card-shadow-highlight);        /* Подсветка карты */
 
-    --border-card: var(--size-middle-border) solid var(--color-middle);
-    --border-face: var(--size-middle-border) solid var(--color-face-stroke);
+    --shadow-body: inset 0 0 var(--size-body-shadow) var(--color-card-shadow-main);        /* Тень фона */
+    --shadow-field: inset 0 0 var(--size-field-shadow) var(--color-card-shadow-main);        /* Тень игрового поля */
+
+    --border-card-main: var(--size-card-border) solid var(--color-card-secondary);        /* Основная граница карты */
+    --border-card-middle: var(--size-middle-border) solid var(--color-face-stroke);        /* Граница средней секции карты */
+
+    --border-main: var(--size-main-border) solid var(--color-score);        /* Граница главной части страницы */
 
     /* - Задержки - */
-    --delay-card: 0.2s;
+    --delay-card-scale: 0.2s;        /* Задержка анимации увеличения карты */
+    --delay-card-position: 0.2s;        /* Задержка анимации переноса карты */
+    --delay-card-rotation: 0.4s;        /* Задержка анимации вращения карты */
+    --delay-card-highlight: 0.2s;        /* Задержка анимации подсвечивания карты */
 }

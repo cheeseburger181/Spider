@@ -4,7 +4,7 @@ function Suit(props) {
 
     let className = "";
     switch (props.position) {
-        case "corner": className = `card__suit_position_corner`; break;
+        case "side": className = `card__suit_position_side`; break;
         case "middle": className = `card__suit_position_middle ${props.className}`; break;
         default: className = ``; break;
     };

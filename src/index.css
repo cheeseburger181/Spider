@@ -1,16 +1,12 @@
-/* --- Тест --- */
+/* --- ОБЩИЕ СТИЛИ --- */
 
 body {
-    box-shadow: inset var(--shadow-card-dragging);
+    padding: var(--size-body-padding);
+    box-shadow: var(--shadow-body);
     background-color: var(--color-body);
-    overflow: hidden;
-}
-
-.App {
-    height: 100%;
-    padding: 0 50px;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     overflow: hidden;
+    user-select: none;
 }

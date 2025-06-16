@@ -1,36 +1,61 @@
-/* --- КАРТЫ --- */
+/* --- КАРТА --- */
 
 .card {
     position: absolute;
-    width: var(--width-card);
-    height: var(--height-card);
-    border: var(--border-card);
-    border-radius: var(--size-border-radius);
-    box-shadow: var(--shadow-card);
-    background-color: var(--color-card);
-    display: flex;
-    user-select: none;
+    width: var(--width-card-main);
+    height: var(--height-card-main);
+    border: var(--border-card-main);
+    border-radius: var(--size-card-border-radius);
+    /* box-shadow: var(--shadow-card-main); */
+    background-color: var(--color-card-main);
+    transform-style: preserve-3d;
     cursor: grab;
 }
 
-.card>* {
+.card > * {
     pointer-events: none;
 }
 
 .card_dragging {
     box-shadow: var(--shadow-card-dragging);
-    transform: scale(1.05);
+    transform: scale(var(--size-card-scale));
 }
 
 .card_highlight {
     box-shadow: var(--shadow-card-highlight);
     background-color: var(--color-card-highlight);
-    transition: all 0.2s;
+}
+
+.card_flipped {
+    transform: rotateY(180deg);
+    cursor: default;
+}
+
+.card__front,
+.card__back {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+}
+
+.card__front {
+    display: flex;
+    transform: rotateY(0deg);
+    backface-visibility: hidden;
+}
+
+.card__back {
+    background-color: var(--color-card-back);
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
 }
 
 .card__section_left,
 .card__section_right {
-    width: var(--width-section-side);
+    width: var(--width-card-side);
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -42,8 +67,8 @@
 }
 
 .card__section_middle {
-    width: var(--width-section-middle);
-    height: var(--height-section-middle);
+    width: var(--width-card-middle);
+    height: var(--height-card-middle);
     margin: var(--size-middle-margin);
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -53,20 +78,20 @@
 }
 
 .card__section_middle:has(> .card__face) {
-    border: var(--border-face);
-    background-color: var(--color-middle);
+    border: var(--border-card-middle);
+    background-color: var(--color-card-secondary);
 }
 
 .card__rank {
-    padding: var(--size-corner-padding);
+    padding: var(--size-side-padding);
     font-family: "Barlow Condensed", sans-serif;
-    font-size: var(--size-font);
+    font-size: var(--size-side-font);
 }
 
 .card__rank_type_red {
-    color: var(--color-red);
+    color: var(--color-card-red);
 }
 
 .card__rank_type_black {
-    color: var(--color-black);
+    color: var(--color-card-black);
 }

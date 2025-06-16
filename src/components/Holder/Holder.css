@@ -1,10 +1,10 @@
-/* --- ДЕРЖАТЕЛИ КАРТ --- */
+/* --- ДЕРЖАТЕЛЬ КАРТ --- */
 
 .holder {
     position: relative;
-    width: var(--width-card);
-    height: var(--height-card);
-    border-radius: var(--size-border-radius);
+    width: var(--width-card-main);
+    height: var(--height-card-main);
+    border-radius: var(--size-card-border-radius);
     background: var(--color-holder);
 }
 
@@ -15,7 +15,7 @@
     left: var(--size-holder-border);
     bottom: var(--size-holder-border);
     right: var(--size-holder-border);
-    border-radius: calc(var(--size-border-radius) - var(--size-holder-border));
+    border-radius: var(--size-holder-border-radius);
     background-color: var(--color-field);
     opacity: var(--opacity-holder);
 }
